@@ -1,6 +1,7 @@
 Submitted by:
 Group Members: Peace Oladunni, Jamie Zheng, Eileen Jiang Smith
-App Description: Allow users to find images, songs of an author, and store/retrieve the results.YouTube Video Link: 
+App Description: Allow users to keep track of assignments and keep them accountable with reminder emails.
+YouTube Video Link: 
 APIs: VideoApp (http:notrealvideoapp.what), SoundApp (http:notreadlsoundapp.what)
 Contact Email: 
 Deployed App Link: 
