@@ -1,0 +1,60 @@
+<%- include('partials/header', { title: 'Search Results' }) %>
+
+<div class="card">
+  <h1>Results for "<%= course %>"</h1>
+
+  <% if (results.length === 0) { %>
+    <div class="empty-state">
+      <p>No assignments found for "<%= course %>".</p>
+      <a href="/search" class="btn btn-secondary" style="margin-top:1rem;">Search Again</a>
+    </div>
+  <% } else { %>
+    <p class="result-meta"><%= results.length %> assignment<%= results.length !== 1 ? 's' : '' %> found.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Course</th>
+          <th>Due Date</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% results.forEach(function(assignment) { %>
+          <tr class="<%= assignment.completed ? 'completed' : '' %>">
+            <td><%= assignment.title %></td>
+            <td><%= assignment.course %></td>
+            <td><%= assignment.dueDate %></td>
+            <td>
+              <span class="badge badge-<%= assignment.priority %>">
+                <%= assignment.priority %>
+              </span>
+            </td>
+            <td><%= assignment.completed ? 'Done' : 'Pending' %></td>
+            <td>
+              <div class="action-cell">
+                <% if (!assignment.completed) { %>
+                  <form action="/markComplete" method="POST">
+                    <input type="hidden" name="id" value="<%= assignment._id %>" />
+                    <button type="submit" class="btn btn-success">Mark Done</button>
+                  </form>
+                <% } %>
+                <form action="/deleteAssignment" method="POST">
+                  <input type="hidden" name="id" value="<%= assignment._id %>" />
+                  <button type="submit" class="btn btn-danger"
+                    onclick="return confirm('Delete this assignment?')">Delete</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <a href="/search" class="btn btn-secondary" style="margin-top:1.5rem; display:inline-block;">Search Again</a>
+  <% } %>
+</div>
+
+<%- include('partials/footer') %>

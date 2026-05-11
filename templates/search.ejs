@@ -1,0 +1,14 @@
+<%- include('partials/header', { title: 'Search' }) %>
+
+<div class="card">
+  <h1>Search Assignments</h1>
+  <form action="/searchResults" method="POST">
+    <div class="form-group">
+      <label for="course">Search by Course</label>
+      <input type="text" id="course" name="course" placeholder="e.g. CMSC335" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+</div>
+
+<%- include('partials/footer') %>

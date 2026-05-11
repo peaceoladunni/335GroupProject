@@ -1,0 +1,20 @@
+<%- include('partials/header', { title: 'Assignment Added' }) %>
+
+<div class="card">
+  <h1>Assignment Added!</h1>
+  <p>Your assignment has been saved successfully.</p>
+
+  <div class="confirm-box">
+    <p>Title: <span><%= title %></span></p>
+    <p>Course: <span><%= course %></span></p>
+    <p>Due Date: <span><%= dueDate %></span></p>
+    <p>Priority: <span><%= priority.charAt(0).toUpperCase() + priority.slice(1) %></span></p>
+  </div>
+
+  <div style="display:flex; gap:1rem; margin-top:1.5rem;">
+    <a href="/addAssignment" class="btn btn-primary">Add Another</a>
+    <a href="/search" class="btn btn-secondary">Search Assignments</a>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

@@ -12,7 +12,7 @@ const assignmentRoutes = require("./assignmentsRoutes");
 const app = express();
 
 app.set("view engine", "ejs");
-app.set("views", path.resolve(__dirname, "views"));
+app.set("views", path.resolve(__dirname, "templates"));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));

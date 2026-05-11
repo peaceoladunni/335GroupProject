@@ -1,0 +1,40 @@
+<%- include('partials/header', { title: 'Add Assignment' }) %>
+
+<div class="card">
+  <h1>Add Assignment</h1>
+  <form action="/submitAssignment" method="POST">
+
+    <div class="form-group">
+      <label for="title">Assignment Title</label>
+      <input type="text" id="title" name="title" placeholder="e.g. Project 3" required />
+    </div>
+
+    <div class="form-group">
+      <label for="course">Course</label>
+      <input type="text" id="course" name="course" placeholder="e.g. CMSC335" required />
+    </div>
+
+    <div class="form-group">
+      <label for="dueDate">Due Date</label>
+      <input type="date" id="dueDate" name="dueDate" required />
+    </div>
+
+    <div class="form-group">
+      <label for="priority">Priority</label>
+      <select id="priority" name="priority">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Your Email (for reminders)</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Assignment</button>
+  </form>
+</div>
+
+<%- include('partials/footer') %>

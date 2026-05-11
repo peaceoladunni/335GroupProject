@@ -17,9 +17,9 @@ router.get("/addAssignment", (request, response) => {
 
 /* Handle add assignment form submission */
 router.post("/submitAssignment", async (request, response) => {
-    const { title, course, dueDate, priority } = request.body;
+    const { title, course, dueDate, priority, email } = request.body;
 
-    const newAssignment = new Assignment({ title, course, dueDate, priority });
+    const newAssignment = new Assignment({ title, course, dueDate, priority, email });
     await newAssignment.save();
 
     response.render("confirmation", { title, course, dueDate, priority });
