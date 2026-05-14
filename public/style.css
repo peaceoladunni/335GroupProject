@@ -360,3 +360,48 @@ tr.completed td {
   font-weight: 500;
 }
 
+/* ── Zen Quote ── */
+.quote-banner {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.8rem 2rem 1.6rem 2.2rem;
+  margin-top: 1.8rem;
+  box-shadow: 0 4px 24px rgba(141, 21, 201, 0.08), 0 1px 4px rgba(0,0,0,0.06);
+  border: 1px solid rgba(141, 21, 201, 0.08);
+  border-left: 4px solid #8d15c9;
+  position: relative;
+  overflow: hidden;
+}
+
+.quote-banner::before {
+  content: '"';
+  position: absolute;
+  top: -1.2rem;
+  right: 1.2rem;
+  font-size: 5.5rem;
+  color: rgba(141, 21, 201, 0.12);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.quote-text {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #3d1a5e;
+  line-height: 1.6;
+  font-weight: 500;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.quote-author {
+  text-align: right;
+  color: #7a6a90;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-top: 0.7rem;
+  letter-spacing: 0.4px;
+  text-transform: none;
+}
