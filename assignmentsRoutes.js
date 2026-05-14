@@ -4,11 +4,11 @@ const express = require("express");
 const router = express.Router();
 const Assignment = require("./Assignments");
 const { getRandomQuote } = require("./services/zenQuotes");
-const { sendQuoteEmail } = require("./services/emailService");
 
 /* Home page */
-router.get("/", (request, response) => {
-  response.render("index");
+router.get("/", async (request, response) => {
+  const { quote, author } = await getRandomQuote();
+  response.render("index", { quote, author });
 });
 
 /* Show add assignment form */
@@ -22,20 +22,10 @@ router.post("/submitAssignment", async (request, response) => {
   const newAssignment = new Assignment({ title, course, dueDate, priority, email });
   await newAssignment.save();
 
-  /* Fetch a zen quote from the ZenQuotes API */
+  /* Grab a fresh zen quote to show on the confirmation page */
   const { quote, author } = await getRandomQuote();
 
-  /* Email the user the quote via EmailJS (don't crash the route if it fails) */
-  let emailed = false;
-  if (email) {
-    const result = await sendQuoteEmail(email, quote, author);
-    emailed = result.success;
-    if (result.success == false) {
-      console.error("email send failed:", result.error);
-    }
-  }
-
-  response.render("confirmation", { title, course, dueDate, priority, quote, author, emailed });
+  response.render("confirmation", { title, course, dueDate, priority, quote, author });
 });
 
 /* Show search form */
